@@ -43,9 +43,9 @@ namespace bmpoligon
             }
         }
 
-        public static Poligon ucitaj()
+        public static Poligon ucitaj(string filename)
         {
-            StreamReader ulaz = new StreamReader("poligon.txt");
+            StreamReader ulaz = new StreamReader(filename);
             int n = Convert.ToInt32(ulaz.ReadLine());
             Poligon rez = new Poligon(n);
             for (int i = 0; i < n; i++)
@@ -58,9 +58,9 @@ namespace bmpoligon
             return rez;
         }
 
-        public void snimi()
+        public void snimi(string filename)
         {
-            StreamWriter izlaz = new StreamWriter("poligon.txt");
+            StreamWriter izlaz = new StreamWriter(filename);
             izlaz.WriteLine($"{br_temena}");
             for (int i = 0; i < br_temena; i++)
             {

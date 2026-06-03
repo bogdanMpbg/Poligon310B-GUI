@@ -29,7 +29,19 @@
         private void InitializeComponent()
         {
             this.panelPoligon = new System.Windows.Forms.Panel();
-            this.textPoligon = new System.Windows.Forms.TextBox();
+            this.listBoxTacke = new System.Windows.Forms.ListBox();
+            this.buttonDodaj = new System.Windows.Forms.Button();
+            this.labelx = new System.Windows.Forms.Label();
+            this.labely = new System.Windows.Forms.Label();
+            this.textBoxX = new System.Windows.Forms.TextBox();
+            this.textBoxY = new System.Windows.Forms.TextBox();
+            this.buttonNapravi = new System.Windows.Forms.Button();
+            this.buttonObrisi = new System.Windows.Forms.Button();
+            this.buttonOcisti = new System.Windows.Forms.Button();
+            this.buttonUcitaj = new System.Windows.Forms.Button();
+            this.buttonSnimi = new System.Windows.Forms.Button();
+            this.buttonNacrtaj = new System.Windows.Forms.Button();
+            this.buttonIzmeni = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelPoligon
@@ -40,22 +52,149 @@
             this.panelPoligon.TabIndex = 0;
             this.panelPoligon.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPoligon_Paint);
             // 
-            // textPoligon
+            // listBoxTacke
             // 
-            this.textPoligon.AcceptsReturn = true;
-            this.textPoligon.Location = new System.Drawing.Point(12, 320);
-            this.textPoligon.Multiline = true;
-            this.textPoligon.Name = "textPoligon";
-            this.textPoligon.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textPoligon.Size = new System.Drawing.Size(592, 307);
-            this.textPoligon.TabIndex = 1;
+            this.listBoxTacke.FormattingEnabled = true;
+            this.listBoxTacke.Items.AddRange(new object[] {
+            "(0, 0)",
+            "(5, 3)",
+            "(7, 0)"});
+            this.listBoxTacke.Location = new System.Drawing.Point(13, 346);
+            this.listBoxTacke.Name = "listBoxTacke";
+            this.listBoxTacke.Size = new System.Drawing.Size(591, 264);
+            this.listBoxTacke.TabIndex = 1;
+            this.listBoxTacke.SelectedIndexChanged += new System.EventHandler(this.listBoxTacke_SelectedIndexChanged);
+            // 
+            // buttonDodaj
+            // 
+            this.buttonDodaj.Location = new System.Drawing.Point(141, 316);
+            this.buttonDodaj.Name = "buttonDodaj";
+            this.buttonDodaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonDodaj.TabIndex = 2;
+            this.buttonDodaj.Text = "Dodaj";
+            this.buttonDodaj.UseVisualStyleBackColor = true;
+            this.buttonDodaj.Click += new System.EventHandler(this.buttonDodaj_Click);
+            // 
+            // labelx
+            // 
+            this.labelx.AutoSize = true;
+            this.labelx.Location = new System.Drawing.Point(12, 296);
+            this.labelx.Name = "labelx";
+            this.labelx.Size = new System.Drawing.Size(17, 13);
+            this.labelx.TabIndex = 3;
+            this.labelx.Text = "X:";
+            // 
+            // labely
+            // 
+            this.labely.AutoSize = true;
+            this.labely.Location = new System.Drawing.Point(12, 323);
+            this.labely.Name = "labely";
+            this.labely.Size = new System.Drawing.Size(17, 13);
+            this.labely.TabIndex = 4;
+            this.labely.Text = "Y:";
+            // 
+            // textBoxX
+            // 
+            this.textBoxX.Location = new System.Drawing.Point(35, 293);
+            this.textBoxX.Name = "textBoxX";
+            this.textBoxX.Size = new System.Drawing.Size(100, 20);
+            this.textBoxX.TabIndex = 5;
+            // 
+            // textBoxY
+            // 
+            this.textBoxY.Location = new System.Drawing.Point(35, 319);
+            this.textBoxY.Name = "textBoxY";
+            this.textBoxY.Size = new System.Drawing.Size(100, 20);
+            this.textBoxY.TabIndex = 6;
+            // 
+            // buttonNapravi
+            // 
+            this.buttonNapravi.Location = new System.Drawing.Point(529, 318);
+            this.buttonNapravi.Name = "buttonNapravi";
+            this.buttonNapravi.Size = new System.Drawing.Size(75, 23);
+            this.buttonNapravi.TabIndex = 7;
+            this.buttonNapravi.Text = "Napravi";
+            this.buttonNapravi.UseVisualStyleBackColor = true;
+            this.buttonNapravi.Click += new System.EventHandler(this.buttonNapravi_Click);
+            // 
+            // buttonObrisi
+            // 
+            this.buttonObrisi.Location = new System.Drawing.Point(303, 316);
+            this.buttonObrisi.Name = "buttonObrisi";
+            this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonObrisi.TabIndex = 8;
+            this.buttonObrisi.Text = "Obrisi";
+            this.buttonObrisi.UseVisualStyleBackColor = true;
+            this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
+            // 
+            // buttonOcisti
+            // 
+            this.buttonOcisti.Location = new System.Drawing.Point(384, 316);
+            this.buttonOcisti.Name = "buttonOcisti";
+            this.buttonOcisti.Size = new System.Drawing.Size(75, 23);
+            this.buttonOcisti.TabIndex = 9;
+            this.buttonOcisti.Text = "Ocisti";
+            this.buttonOcisti.UseVisualStyleBackColor = true;
+            this.buttonOcisti.Click += new System.EventHandler(this.buttonOcisti_Click);
+            // 
+            // buttonUcitaj
+            // 
+            this.buttonUcitaj.Location = new System.Drawing.Point(12, 12);
+            this.buttonUcitaj.Name = "buttonUcitaj";
+            this.buttonUcitaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonUcitaj.TabIndex = 10;
+            this.buttonUcitaj.Text = "Ucitaj";
+            this.buttonUcitaj.UseVisualStyleBackColor = true;
+            this.buttonUcitaj.Click += new System.EventHandler(this.buttonUcitaj_Click);
+            // 
+            // buttonSnimi
+            // 
+            this.buttonSnimi.Location = new System.Drawing.Point(12, 41);
+            this.buttonSnimi.Name = "buttonSnimi";
+            this.buttonSnimi.Size = new System.Drawing.Size(75, 23);
+            this.buttonSnimi.TabIndex = 11;
+            this.buttonSnimi.Text = "Snimi";
+            this.buttonSnimi.UseVisualStyleBackColor = true;
+            this.buttonSnimi.Click += new System.EventHandler(this.buttonSnimi_Click);
+            // 
+            // buttonNacrtaj
+            // 
+            this.buttonNacrtaj.Location = new System.Drawing.Point(529, 291);
+            this.buttonNacrtaj.Name = "buttonNacrtaj";
+            this.buttonNacrtaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonNacrtaj.TabIndex = 12;
+            this.buttonNacrtaj.Text = "Nacrtaj";
+            this.buttonNacrtaj.UseVisualStyleBackColor = true;
+            this.buttonNacrtaj.Click += new System.EventHandler(this.buttonNacrtaj_Click);
+            // 
+            // buttonIzmeni
+            // 
+            this.buttonIzmeni.Location = new System.Drawing.Point(222, 316);
+            this.buttonIzmeni.Name = "buttonIzmeni";
+            this.buttonIzmeni.Size = new System.Drawing.Size(75, 23);
+            this.buttonIzmeni.TabIndex = 13;
+            this.buttonIzmeni.Text = "Izmeni";
+            this.buttonIzmeni.UseVisualStyleBackColor = true;
+            this.buttonIzmeni.Click += new System.EventHandler(this.buttonIzmeni_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 639);
-            this.Controls.Add(this.textPoligon);
+            this.Controls.Add(this.buttonIzmeni);
+            this.Controls.Add(this.buttonNacrtaj);
+            this.Controls.Add(this.buttonSnimi);
+            this.Controls.Add(this.buttonUcitaj);
+            this.Controls.Add(this.buttonOcisti);
+            this.Controls.Add(this.buttonObrisi);
+            this.Controls.Add(this.buttonNapravi);
+            this.Controls.Add(this.textBoxY);
+            this.Controls.Add(this.textBoxX);
+            this.Controls.Add(this.labely);
+            this.Controls.Add(this.labelx);
+            this.Controls.Add(this.buttonDodaj);
+            this.Controls.Add(this.listBoxTacke);
             this.Controls.Add(this.panelPoligon);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -68,7 +207,19 @@
         #endregion
 
         private System.Windows.Forms.Panel panelPoligon;
-        private System.Windows.Forms.TextBox textPoligon;
+        private System.Windows.Forms.ListBox listBoxTacke;
+        private System.Windows.Forms.Button buttonDodaj;
+        private System.Windows.Forms.Label labelx;
+        private System.Windows.Forms.Label labely;
+        private System.Windows.Forms.TextBox textBoxX;
+        private System.Windows.Forms.TextBox textBoxY;
+        private System.Windows.Forms.Button buttonNapravi;
+        private System.Windows.Forms.Button buttonObrisi;
+        private System.Windows.Forms.Button buttonOcisti;
+        private System.Windows.Forms.Button buttonUcitaj;
+        private System.Windows.Forms.Button buttonSnimi;
+        private System.Windows.Forms.Button buttonNacrtaj;
+        private System.Windows.Forms.Button buttonIzmeni;
     }
 }
 
