@@ -42,6 +42,9 @@
             this.buttonSnimi = new System.Windows.Forms.Button();
             this.buttonNacrtaj = new System.Windows.Forms.Button();
             this.buttonIzmeni = new System.Windows.Forms.Button();
+            this.buttonProst = new System.Windows.Forms.Button();
+            this.buttonKonveksan = new System.Windows.Forms.Button();
+            this.buttonPovrsina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelPoligon
@@ -177,11 +180,44 @@
             this.buttonIzmeni.UseVisualStyleBackColor = true;
             this.buttonIzmeni.Click += new System.EventHandler(this.buttonIzmeni_Click);
             // 
+            // buttonProst
+            // 
+            this.buttonProst.Location = new System.Drawing.Point(93, 12);
+            this.buttonProst.Name = "buttonProst";
+            this.buttonProst.Size = new System.Drawing.Size(75, 23);
+            this.buttonProst.TabIndex = 14;
+            this.buttonProst.Text = "Prost";
+            this.buttonProst.UseVisualStyleBackColor = true;
+            this.buttonProst.Click += new System.EventHandler(this.buttonProst_Click);
+            // 
+            // buttonKonveksan
+            // 
+            this.buttonKonveksan.Location = new System.Drawing.Point(93, 41);
+            this.buttonKonveksan.Name = "buttonKonveksan";
+            this.buttonKonveksan.Size = new System.Drawing.Size(75, 23);
+            this.buttonKonveksan.TabIndex = 15;
+            this.buttonKonveksan.Text = "Konveksan";
+            this.buttonKonveksan.UseVisualStyleBackColor = true;
+            this.buttonKonveksan.Click += new System.EventHandler(this.buttonKonveksan_Click);
+            // 
+            // buttonPovrsina
+            // 
+            this.buttonPovrsina.Location = new System.Drawing.Point(93, 70);
+            this.buttonPovrsina.Name = "buttonPovrsina";
+            this.buttonPovrsina.Size = new System.Drawing.Size(75, 23);
+            this.buttonPovrsina.TabIndex = 16;
+            this.buttonPovrsina.Text = "Povrsina";
+            this.buttonPovrsina.UseVisualStyleBackColor = true;
+            this.buttonPovrsina.Click += new System.EventHandler(this.buttonPovrsina_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 639);
+            this.Controls.Add(this.buttonPovrsina);
+            this.Controls.Add(this.buttonKonveksan);
+            this.Controls.Add(this.buttonProst);
             this.Controls.Add(this.buttonIzmeni);
             this.Controls.Add(this.buttonNacrtaj);
             this.Controls.Add(this.buttonSnimi);
@@ -220,6 +256,9 @@
         private System.Windows.Forms.Button buttonSnimi;
         private System.Windows.Forms.Button buttonNacrtaj;
         private System.Windows.Forms.Button buttonIzmeni;
+        private System.Windows.Forms.Button buttonProst;
+        private System.Windows.Forms.Button buttonKonveksan;
+        private System.Windows.Forms.Button buttonPovrsina;
     }
 }
 

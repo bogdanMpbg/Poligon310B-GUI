@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection.Emit;
 
 namespace bmpoligon
 {
@@ -175,6 +176,38 @@ namespace bmpoligon
             {
                 MessageBox.Show("Niste ispravno uneli koordinate.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonProst_Click(object sender, EventArgs e)
+        {
+            bool prost = p.prost();
+            if (prost)
+            {
+                MessageBox.Show("Prost", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Nije prost", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void buttonKonveksan_Click(object sender, EventArgs e)
+        {
+            bool konveksan = p.konveksan();
+            if (konveksan)
+            {
+                MessageBox.Show("Konveksan", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Konkavan", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void buttonPovrsina_Click(object sender, EventArgs e)
+        {
+            double povrsina = p.povrsina();
+            MessageBox.Show($"Povrsina je {povrsina}", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
