@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection.Emit;
+using System.Drawing.Imaging;
 
 namespace bmpoligon
 {
@@ -70,6 +71,22 @@ namespace bmpoligon
                     paneltacke[i] = new PointF((float)((p.teme[i].x - xMin) * opseg), (float)(panelPoligon.Height - (p.teme[i].y - yMin) * opseg));
                 }
                 g.FillPolygon(boja, paneltacke);
+
+                if (checkBoxIvice.Checked)
+                {
+                    for (int i = 0; i < p.br_temena; i++)
+                    {
+                        g.DrawLine(new Pen(Brushes.Black), paneltacke[i], paneltacke[(i+1) % p.br_temena]);
+                    }
+                }
+
+                if (checkBoxTacke.Checked)
+                {
+                    for (int i = 0; i < p.br_temena; i++)
+                    {
+                        g.FillEllipse(Brushes.Black, paneltacke[i].X - 5, paneltacke[i].Y - 5, 10, 10);
+                    }
+                }
             }
         }
 
@@ -133,20 +150,11 @@ namespace bmpoligon
                 ystr = ystr.Substring(0, ystr.Length - 1);
                 p.teme[i] = new Tacka(Convert.ToDouble(xstr), Convert.ToDouble(ystr));
             }
-            panelPoligon.Refresh();
+            MessageBox.Show("Poligon uspesno napravljen.", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonNacrtaj_Click(object sender, EventArgs e)
         {
-            p = new Poligon(listBoxTacke.Items.Count);
-            for (int i = 0; i < listBoxTacke.Items.Count; i++)
-            {
-                string tackastr = (string)listBoxTacke.Items[i];
-                string xstr = tackastr.Split(',')[0].Substring(1);
-                string ystr = tackastr.Split(',')[1].Trim();
-                ystr = ystr.Substring(0, ystr.Length - 1);
-                p.teme[i] = new Tacka(Convert.ToDouble(xstr), Convert.ToDouble(ystr));
-            }
             panelPoligon.Refresh();
         }
 
@@ -244,6 +252,55 @@ namespace bmpoligon
             {
                 boja = new SolidBrush(dialog.Color);
                 panelPoligon.Refresh();
+            }
+        }
+
+        private void checkBoxIvice_CheckedChanged(object sender, EventArgs e)
+        {
+            panelPoligon.Refresh();
+        }
+
+        private void checkBoxTacke_CheckedChanged(object sender, EventArgs e)
+        {
+            panelPoligon.Refresh();
+        }
+
+        private void buttonSlika_Click(object sender, EventArgs e)
+        {
+            Bitmap bm = new Bitmap(panelPoligon.Width, panelPoligon.Height);
+            panelPoligon.DrawToBitmap(bm, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Bitmap Image (.bmp)|*.bmp|GIF Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|PNG Image (.png)|*.png|TIFF Image (.tiff)|*.tiff|WMF Image (.wmf)|*.wmf";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string ext = Path.GetExtension(dialog.FileName).ToLower();
+                ImageFormat format = null;
+                switch (ext)
+                {
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                    case ".png":
+                        format = ImageFormat.Png;
+                        break;
+                    case ".gif":
+                        format = ImageFormat.Gif;
+                        break;
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".jpeg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".tiff":
+                        format = ImageFormat.Tiff;
+                        break;
+                    case ".wmf":
+                        format = ImageFormat.Wmf;
+                        break;
+                }
+                
+                bm.Save(dialog.FileName, format);
             }
         }
     }

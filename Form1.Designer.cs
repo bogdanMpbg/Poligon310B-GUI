@@ -46,6 +46,9 @@
             this.buttonKonveksan = new System.Windows.Forms.Button();
             this.buttonPovrsina = new System.Windows.Forms.Button();
             this.buttonBoja = new System.Windows.Forms.Button();
+            this.checkBoxIvice = new System.Windows.Forms.CheckBox();
+            this.checkBoxTacke = new System.Windows.Forms.CheckBox();
+            this.buttonSlika = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelPoligon
@@ -221,11 +224,50 @@
             this.buttonBoja.UseVisualStyleBackColor = true;
             this.buttonBoja.Click += new System.EventHandler(this.buttonBoja_Click);
             // 
+            // checkBoxIvice
+            // 
+            this.checkBoxIvice.AutoSize = true;
+            this.checkBoxIvice.Checked = true;
+            this.checkBoxIvice.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIvice.Location = new System.Drawing.Point(529, 41);
+            this.checkBoxIvice.Name = "checkBoxIvice";
+            this.checkBoxIvice.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxIvice.TabIndex = 18;
+            this.checkBoxIvice.Text = "Ivice";
+            this.checkBoxIvice.UseVisualStyleBackColor = true;
+            this.checkBoxIvice.CheckedChanged += new System.EventHandler(this.checkBoxIvice_CheckedChanged);
+            // 
+            // checkBoxTacke
+            // 
+            this.checkBoxTacke.AutoSize = true;
+            this.checkBoxTacke.Checked = true;
+            this.checkBoxTacke.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTacke.Location = new System.Drawing.Point(529, 64);
+            this.checkBoxTacke.Name = "checkBoxTacke";
+            this.checkBoxTacke.Size = new System.Drawing.Size(57, 17);
+            this.checkBoxTacke.TabIndex = 19;
+            this.checkBoxTacke.Text = "Tacke";
+            this.checkBoxTacke.UseVisualStyleBackColor = true;
+            this.checkBoxTacke.CheckedChanged += new System.EventHandler(this.checkBoxTacke_CheckedChanged);
+            // 
+            // buttonSlika
+            // 
+            this.buttonSlika.Location = new System.Drawing.Point(12, 70);
+            this.buttonSlika.Name = "buttonSlika";
+            this.buttonSlika.Size = new System.Drawing.Size(75, 23);
+            this.buttonSlika.TabIndex = 20;
+            this.buttonSlika.Text = "Slika";
+            this.buttonSlika.UseVisualStyleBackColor = true;
+            this.buttonSlika.Click += new System.EventHandler(this.buttonSlika_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 639);
+            this.Controls.Add(this.buttonSlika);
+            this.Controls.Add(this.checkBoxTacke);
+            this.Controls.Add(this.checkBoxIvice);
             this.Controls.Add(this.buttonBoja);
             this.Controls.Add(this.buttonPovrsina);
             this.Controls.Add(this.buttonKonveksan);
@@ -272,6 +314,9 @@
         private System.Windows.Forms.Button buttonKonveksan;
         private System.Windows.Forms.Button buttonPovrsina;
         private System.Windows.Forms.Button buttonBoja;
+        private System.Windows.Forms.CheckBox checkBoxIvice;
+        private System.Windows.Forms.CheckBox checkBoxTacke;
+        private System.Windows.Forms.Button buttonSlika;
     }
 }
 
