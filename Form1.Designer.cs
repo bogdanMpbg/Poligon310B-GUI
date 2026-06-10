@@ -45,6 +45,7 @@
             this.buttonProst = new System.Windows.Forms.Button();
             this.buttonKonveksan = new System.Windows.Forms.Button();
             this.buttonPovrsina = new System.Windows.Forms.Button();
+            this.buttonBoja = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelPoligon
@@ -210,11 +211,22 @@
             this.buttonPovrsina.UseVisualStyleBackColor = true;
             this.buttonPovrsina.Click += new System.EventHandler(this.buttonPovrsina_Click);
             // 
+            // buttonBoja
+            // 
+            this.buttonBoja.Location = new System.Drawing.Point(529, 12);
+            this.buttonBoja.Name = "buttonBoja";
+            this.buttonBoja.Size = new System.Drawing.Size(75, 23);
+            this.buttonBoja.TabIndex = 17;
+            this.buttonBoja.Text = "Boja";
+            this.buttonBoja.UseVisualStyleBackColor = true;
+            this.buttonBoja.Click += new System.EventHandler(this.buttonBoja_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 639);
+            this.Controls.Add(this.buttonBoja);
             this.Controls.Add(this.buttonPovrsina);
             this.Controls.Add(this.buttonKonveksan);
             this.Controls.Add(this.buttonProst);
@@ -259,6 +271,7 @@
         private System.Windows.Forms.Button buttonProst;
         private System.Windows.Forms.Button buttonKonveksan;
         private System.Windows.Forms.Button buttonPovrsina;
+        private System.Windows.Forms.Button buttonBoja;
     }
 }
 

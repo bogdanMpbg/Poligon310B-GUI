@@ -45,29 +45,32 @@ namespace bmpoligon
 
         private void panelPoligon_Paint(object sender, PaintEventArgs e)
         {
-            double xMax = p.teme[0].x;
-            double xMin = p.teme[0].x;
-            double yMax = p.teme[0].y;
-            double yMin = p.teme[0].y;
-            for (int i = 1; i < p.br_temena; i++)
+            if (p.br_temena > 0)
             {
-                if (p.teme[i].x > xMax) xMax = p.teme[i].x;
-                if (p.teme[i].x < xMin) xMin = p.teme[i].x;
-                if (p.teme[i].y > yMax) yMax = p.teme[i].y;
-                if (p.teme[i].y < yMin) yMin = p.teme[i].y;
-            }
-            double opsegX = panelPoligon.Width / (xMax - xMin);
-            double opsegY = panelPoligon.Height / (yMax - yMin);
-            double opseg;
-            if (opsegX > opsegY) opseg = opsegY;
-            else opseg = opsegX;
+                double xMax = p.teme[0].x;
+                double xMin = p.teme[0].x;
+                double yMax = p.teme[0].y;
+                double yMin = p.teme[0].y;
+                for (int i = 1; i < p.br_temena; i++)
+                {
+                    if (p.teme[i].x > xMax) xMax = p.teme[i].x;
+                    if (p.teme[i].x < xMin) xMin = p.teme[i].x;
+                    if (p.teme[i].y > yMax) yMax = p.teme[i].y;
+                    if (p.teme[i].y < yMin) yMin = p.teme[i].y;
+                }
+                double opsegX = panelPoligon.Width / (xMax - xMin);
+                double opsegY = panelPoligon.Height / (yMax - yMin);
+                double opseg;
+                if (opsegX > opsegY) opseg = opsegY;
+                else opseg = opsegX;
 
-            PointF[] paneltacke = new PointF[p.br_temena];
-            for (int i = 0; i < p.br_temena; i++)
-            {
-                paneltacke[i] = new PointF((float)((p.teme[i].x - xMin) * opseg), (float)(panelPoligon.Height - (p.teme[i].y - yMin) * opseg));
+                PointF[] paneltacke = new PointF[p.br_temena];
+                for (int i = 0; i < p.br_temena; i++)
+                {
+                    paneltacke[i] = new PointF((float)((p.teme[i].x - xMin) * opseg), (float)(panelPoligon.Height - (p.teme[i].y - yMin) * opseg));
+                }
+                g.FillPolygon(boja, paneltacke);
             }
-            g.FillPolygon(boja, paneltacke);
         }
 
         private void buttonDodaj_Click(object sender, EventArgs e)
@@ -135,6 +138,15 @@ namespace bmpoligon
 
         private void buttonNacrtaj_Click(object sender, EventArgs e)
         {
+            p = new Poligon(listBoxTacke.Items.Count);
+            for (int i = 0; i < listBoxTacke.Items.Count; i++)
+            {
+                string tackastr = (string)listBoxTacke.Items[i];
+                string xstr = tackastr.Split(',')[0].Substring(1);
+                string ystr = tackastr.Split(',')[1].Trim();
+                ystr = ystr.Substring(0, ystr.Length - 1);
+                p.teme[i] = new Tacka(Convert.ToDouble(xstr), Convert.ToDouble(ystr));
+            }
             panelPoligon.Refresh();
         }
 
@@ -154,8 +166,15 @@ namespace bmpoligon
             dialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                p = Poligon.ucitaj(dialog.FileName);
-                upisi();
+                try
+                {
+                    p = Poligon.ucitaj(dialog.FileName);
+                    upisi();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greska pri ucitavanju poligona. Proverite da li je fajl ispravan.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 panelPoligon.Refresh();
             }
         }
@@ -206,8 +225,26 @@ namespace bmpoligon
 
         private void buttonPovrsina_Click(object sender, EventArgs e)
         {
-            double povrsina = p.povrsina();
-            MessageBox.Show($"Povrsina je {povrsina}", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                double povrsina = p.povrsina();
+                MessageBox.Show($"Povrsina je {povrsina}", "Poligon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Prosti poligoni nemaju povrsinu.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonBoja_Click(object sender, EventArgs e)
+        {
+            ColorDialog dialog = new ColorDialog();
+            dialog.Color = ((SolidBrush)boja).Color;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                boja = new SolidBrush(dialog.Color);
+                panelPoligon.Refresh();
+            }
         }
     }
 }
