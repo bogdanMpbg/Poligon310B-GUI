@@ -48,6 +48,7 @@ namespace bmpoligon
         {
             if (p.br_temena > 0)
             {
+                g.FillRectangle(Brushes.White, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
                 double xMax = p.teme[0].x;
                 double xMin = p.teme[0].x;
                 double yMax = p.teme[0].y;
@@ -303,7 +304,9 @@ namespace bmpoligon
         private void buttonSlika_Click(object sender, EventArgs e)
         {
             Bitmap bm = new Bitmap(panelPoligon.Width, panelPoligon.Height);
-            panelPoligon.DrawToBitmap(bm, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
+            g = Graphics.FromImage(bm);
+            panelPoligon_Paint(null, null);
+            g = panelPoligon.CreateGraphics();
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "Bitmap Image (.bmp)|*.bmp|GIF Image (.gif)|*.gif|JPEG Image (.jpeg)|*.jpeg|PNG Image (.png)|*.png|TIFF Image (.tiff)|*.tiff|WMF Image (.wmf)|*.wmf";
             if (dialog.ShowDialog() == DialogResult.OK)
