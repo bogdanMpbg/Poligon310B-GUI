@@ -61,14 +61,47 @@ namespace bmpoligon
                 }
                 double opsegX = panelPoligon.Width / (xMax - xMin);
                 double opsegY = panelPoligon.Height / (yMax - yMin);
+                double centarX = 0;
+                double centarY = 0;
+                int brojLinija = 0;
+                int pocetnaX = 0;
+                int pocetnaY = 0;
                 double opseg;
-                if (opsegX > opsegY) opseg = opsegY;
-                else opseg = opsegX;
+                if (opsegX > opsegY)
+                {
+                    opseg = opsegY;
+                    centarX = ((yMax - yMin) - (xMax - xMin)) / 2;
+                    brojLinija = (int)Math.Ceiling(yMax - yMin);
+                    pocetnaX = (int)Math.Floor((xMax - xMin) - (yMax - yMin));
+                }
+                else
+                {
+                    opseg = opsegX;
+                    centarY = ((xMax - xMin) - (yMax - yMin)) / 2;
+                    brojLinija = (int)Math.Ceiling(xMax - xMin);
+                    pocetnaY = (int)Math.Floor((yMax - yMin) - (xMax - xMin));
+                }
+
+                if (checkBoxMreza.Checked)
+                {
+                    for (int x = pocetnaX; x < brojLinija; x++)
+                    {
+                        PointF t1 = new PointF((float)((x - xMin + centarX) * opseg), 0);
+                        PointF t2 = new PointF((float)((x - xMin + centarX) * opseg), panelPoligon.Height);
+                        g.DrawLine(new Pen(Brushes.Black), t1, t2);
+                    }
+                    for (int y = pocetnaY; y < brojLinija; y++)
+                    {
+                        PointF t1 = new PointF(0, (float)(panelPoligon.Height - (y - yMin + centarY) * opseg));
+                        PointF t2 = new PointF(panelPoligon.Width, (float)(panelPoligon.Height - (y - yMin + centarY) * opseg));
+                        g.DrawLine(new Pen(Brushes.Black), t1, t2);
+                    }
+                }
 
                 PointF[] paneltacke = new PointF[p.br_temena];
                 for (int i = 0; i < p.br_temena; i++)
                 {
-                    paneltacke[i] = new PointF((float)((p.teme[i].x - xMin) * opseg), (float)(panelPoligon.Height - (p.teme[i].y - yMin) * opseg));
+                    paneltacke[i] = new PointF((float)((p.teme[i].x - xMin + centarX) * opseg), (float)(panelPoligon.Height - (p.teme[i].y - yMin + centarY) * opseg));
                 }
                 g.FillPolygon(boja, paneltacke);
 
@@ -87,6 +120,8 @@ namespace bmpoligon
                         g.FillEllipse(Brushes.Black, paneltacke[i].X - 5, paneltacke[i].Y - 5, 10, 10);
                     }
                 }
+
+                
             }
         }
 
@@ -240,7 +275,7 @@ namespace bmpoligon
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Prosti poligoni nemaju povrsinu.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Samo prosti poligoni imaju povrsinu.", "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -302,6 +337,11 @@ namespace bmpoligon
                 
                 bm.Save(dialog.FileName, format);
             }
+        }
+
+        private void checkBoxMreza_CheckedChanged(object sender, EventArgs e)
+        {
+            panelPoligon.Refresh();
         }
     }
 }

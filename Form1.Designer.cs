@@ -49,6 +49,7 @@
             this.checkBoxIvice = new System.Windows.Forms.CheckBox();
             this.checkBoxTacke = new System.Windows.Forms.CheckBox();
             this.buttonSlika = new System.Windows.Forms.Button();
+            this.checkBoxMreza = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // panelPoligon
@@ -260,11 +261,23 @@
             this.buttonSlika.UseVisualStyleBackColor = true;
             this.buttonSlika.Click += new System.EventHandler(this.buttonSlika_Click);
             // 
+            // checkBoxMreza
+            // 
+            this.checkBoxMreza.AutoSize = true;
+            this.checkBoxMreza.Location = new System.Drawing.Point(529, 88);
+            this.checkBoxMreza.Name = "checkBoxMreza";
+            this.checkBoxMreza.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxMreza.TabIndex = 21;
+            this.checkBoxMreza.Text = "Mreza";
+            this.checkBoxMreza.UseVisualStyleBackColor = true;
+            this.checkBoxMreza.CheckedChanged += new System.EventHandler(this.checkBoxMreza_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1289, 639);
+            this.Controls.Add(this.checkBoxMreza);
             this.Controls.Add(this.buttonSlika);
             this.Controls.Add(this.checkBoxTacke);
             this.Controls.Add(this.checkBoxIvice);
@@ -317,6 +330,7 @@
         private System.Windows.Forms.CheckBox checkBoxIvice;
         private System.Windows.Forms.CheckBox checkBoxTacke;
         private System.Windows.Forms.Button buttonSlika;
+        private System.Windows.Forms.CheckBox checkBoxMreza;
     }
 }
 

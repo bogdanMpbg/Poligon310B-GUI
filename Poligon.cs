@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace bmpoligon
 {
@@ -136,6 +137,7 @@ namespace bmpoligon
                 {
                     if (stranica[i].sece(stranica[j]))
                     {
+                        MessageBox.Show($"{i} i {j} se seku");
                         return false;
                     }
                 }
@@ -145,9 +147,9 @@ namespace bmpoligon
 
         public double povrsina()
         {
-            if (prost())
+            if (!prost())
             {
-                throw new Exception("prosti poligoni nemaju povrsinu");
+                throw new Exception("samo prosti poligoni imaju povrsinu");
             }
             double[] x = new double[br_temena];
             double[] y = new double[br_temena];

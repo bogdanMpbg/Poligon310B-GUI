@@ -28,7 +28,7 @@ namespace bmpoligon
         {
             Tacka at = a.centriraj();
             Tacka bt = b.centriraj();
-            return at.x * bt.y - at.x * bt.y;
+            return at.x * bt.y - at.y * bt.x;
         }
 
         public double duzina()
