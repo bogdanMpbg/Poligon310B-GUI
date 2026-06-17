@@ -402,6 +402,33 @@ namespace bmpoligon
             }
         }
 
+        private void mreza()
+        {
+            if (checkBoxMreza.Checked)
+            {
+                int x = (int)(pocetnaX + (pomerajX * 1 / opseg));
+                float tacka = 0;
+                while (tacka < panelPoligon.Width)
+                {
+                    tacka = (float)((((x - xMin + centarX) * opseg) * zoom - pomerajX));
+                    PointF t1 = new PointF(tacka, 0);
+                    PointF t2 = new PointF(tacka, panelPoligon.Height);
+                    g.DrawLine(new Pen(Brushes.Black), t1, t2);
+                    x++;
+                }
+                int y = (int)(pocetnaY + (pomerajY * 1 / opseg) - (panelPoligon.Height * 1 / opseg));
+                tacka = 0;
+                while (tacka < panelPoligon.Height)
+                {
+                    tacka = (float)(((y - yMin + centarY) * opseg) * zoom - pomerajY);
+                    PointF t1 = new PointF(0, (float)(panelPoligon.Height + tacka));
+                    PointF t2 = new PointF(panelPoligon.Width, (float)(panelPoligon.Height + tacka));
+                    g.DrawLine(new Pen(Brushes.Black), t1, t2);
+                    y++;
+                }
+            }
+        }
+
         private void panelPoligon_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -413,29 +440,7 @@ namespace bmpoligon
                 pomerajX = clickXorig - e.X;
                 pomerajY = clickYorig - e.Y;
 
-                if (checkBoxMreza.Checked)
-                {
-                    int x = (int)(pocetnaX + (pomerajX * 1 / opseg));
-                    float tacka = 0;
-                    while (tacka < panelPoligon.Width)
-                    {
-                        tacka = (float)((((x - xMin + centarX) * opseg) * zoom - pomerajX));
-                        PointF t1 = new PointF(tacka, 0);
-                        PointF t2 = new PointF(tacka, panelPoligon.Height);
-                        g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                        x++;
-                    }
-                    int y = (int)(pocetnaY + (pomerajY * 1 / opseg) - (panelPoligon.Height * 1 / opseg));
-                    tacka = 0;
-                    while (tacka < panelPoligon.Height)
-                    {
-                        tacka = (float)(((y - yMin + centarY) * opseg) * zoom - pomerajY);
-                        PointF t1 = new PointF(0, (float)(panelPoligon.Height + tacka));
-                        PointF t2 = new PointF(panelPoligon.Width, (float)(panelPoligon.Height + tacka));
-                        g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                        y++;
-                    }
-                }
+                mreza();
 
                 for (int i = 0; i < p.br_temena; i++)
                 {
@@ -477,6 +482,7 @@ namespace bmpoligon
         private void panelPoligon_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+            MessageBox.Show($"{pomerajX} {pomerajY}");
         }
 
         private void panelPoligon_Scroll(object sender, MouseEventArgs e)
@@ -486,9 +492,13 @@ namespace bmpoligon
             if (e.Delta < 0)
             {
                 zoom *= 0.8;
+                pomerajX *= 0.8;
+                pomerajY *= 0.8;
             } else
             {
                 zoom *= 1.25;
+                pomerajX *= 1.25;
+                pomerajY *= 1.25;
             }
 
             for (int i = 0; i < p.br_temena; i++)
@@ -503,29 +513,7 @@ namespace bmpoligon
                 }
             }
 
-            if (checkBoxMreza.Checked)
-            {
-                int x = (int)(pocetnaX + (pomerajX * 1 / opseg));
-                float tacka = 0;
-                while (tacka < panelPoligon.Width * zoom)
-                {
-                    tacka = (float)(((x - xMin + centarX) * opseg) * zoom - pomerajX);
-                    PointF t1 = new PointF(tacka, 0);
-                    PointF t2 = new PointF(tacka, panelPoligon.Height);
-                    g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                    x++;
-                }
-                int y = (int)(pocetnaY + (pomerajY * 1 / opseg) - (panelPoligon.Height * 1 / opseg));
-                tacka = 0;
-                while (tacka < panelPoligon.Height * zoom)
-                {
-                    tacka = (float)(((y - yMin + centarY) * opseg) * zoom - pomerajY);
-                    PointF t1 = new PointF(0, (float)(panelPoligon.Height + tacka));
-                    PointF t2 = new PointF(panelPoligon.Width, (float)(panelPoligon.Height + tacka));
-                    g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                    y++;
-                }
-            }
+            mreza();
 
             g.FillPolygon(boja, paneltacke);
 
