@@ -406,17 +406,18 @@ namespace bmpoligon
         {
             if (checkBoxMreza.Checked)
             {
-                int x = (int)(pocetnaX + (pomerajX * 1 / opseg));
+                double opsegM = opseg * zoom;
+                int x = (int)(pocetnaX + (pomerajX * 1 / opsegM));
                 float tacka = 0;
                 while (tacka < panelPoligon.Width)
                 {
-                    tacka = (float)((((x - xMin + centarX) * opseg) * zoom - pomerajX));
+                    tacka = (float)(((x - xMin + centarX) * opseg) * zoom - pomerajX);
                     PointF t1 = new PointF(tacka, 0);
                     PointF t2 = new PointF(tacka, panelPoligon.Height);
                     g.DrawLine(new Pen(Brushes.Black), t1, t2);
                     x++;
                 }
-                int y = (int)(pocetnaY + (pomerajY * 1 / opseg) - (panelPoligon.Height * 1 / opseg));
+                int y = (int)(pocetnaY + (pomerajY * 1 / opsegM) - (panelPoligon.Height * 1 / opsegM));
                 tacka = 0;
                 while (tacka < panelPoligon.Height)
                 {
