@@ -55,38 +55,34 @@
             // 
             // panelPoligon
             // 
-            this.panelPoligon.Location = new System.Drawing.Point(813, 15);
-            this.panelPoligon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelPoligon.Location = new System.Drawing.Point(610, 12);
             this.panelPoligon.Name = "panelPoligon";
-            this.panelPoligon.Size = new System.Drawing.Size(889, 757);
+            this.panelPoligon.Size = new System.Drawing.Size(615, 615);
             this.panelPoligon.TabIndex = 0;
-            this.panelPoligon.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panelPoligon_Scroll);
             this.panelPoligon.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPoligon_Paint);
             this.panelPoligon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelPoligon_MouseDown);
             this.panelPoligon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelPoligon_MouseMove);
             this.panelPoligon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelPoligon_MouseUp);
+            this.panelPoligon.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panelPoligon_Scroll);
             // 
             // listBoxTacke
             // 
             this.listBoxTacke.FormattingEnabled = true;
-            this.listBoxTacke.ItemHeight = 16;
             this.listBoxTacke.Items.AddRange(new object[] {
             "(0, 0)",
             "(5, 3)",
             "(7, 0)"});
-            this.listBoxTacke.Location = new System.Drawing.Point(17, 426);
-            this.listBoxTacke.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxTacke.Location = new System.Drawing.Point(13, 346);
             this.listBoxTacke.Name = "listBoxTacke";
-            this.listBoxTacke.Size = new System.Drawing.Size(787, 324);
+            this.listBoxTacke.Size = new System.Drawing.Size(591, 264);
             this.listBoxTacke.TabIndex = 1;
             this.listBoxTacke.SelectedIndexChanged += new System.EventHandler(this.listBoxTacke_SelectedIndexChanged);
             // 
             // buttonDodaj
             // 
-            this.buttonDodaj.Location = new System.Drawing.Point(188, 389);
-            this.buttonDodaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDodaj.Location = new System.Drawing.Point(141, 316);
             this.buttonDodaj.Name = "buttonDodaj";
-            this.buttonDodaj.Size = new System.Drawing.Size(100, 28);
+            this.buttonDodaj.Size = new System.Drawing.Size(75, 23);
             this.buttonDodaj.TabIndex = 2;
             this.buttonDodaj.Text = "Dodaj";
             this.buttonDodaj.UseVisualStyleBackColor = true;
@@ -95,45 +91,40 @@
             // labelx
             // 
             this.labelx.AutoSize = true;
-            this.labelx.Location = new System.Drawing.Point(16, 364);
-            this.labelx.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelx.Location = new System.Drawing.Point(12, 296);
             this.labelx.Name = "labelx";
-            this.labelx.Size = new System.Drawing.Size(18, 16);
+            this.labelx.Size = new System.Drawing.Size(17, 13);
             this.labelx.TabIndex = 3;
             this.labelx.Text = "X:";
             // 
             // labely
             // 
             this.labely.AutoSize = true;
-            this.labely.Location = new System.Drawing.Point(16, 398);
-            this.labely.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labely.Location = new System.Drawing.Point(12, 323);
             this.labely.Name = "labely";
-            this.labely.Size = new System.Drawing.Size(19, 16);
+            this.labely.Size = new System.Drawing.Size(17, 13);
             this.labely.TabIndex = 4;
             this.labely.Text = "Y:";
             // 
             // textBoxX
             // 
-            this.textBoxX.Location = new System.Drawing.Point(47, 361);
-            this.textBoxX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX.Location = new System.Drawing.Point(35, 293);
             this.textBoxX.Name = "textBoxX";
-            this.textBoxX.Size = new System.Drawing.Size(132, 22);
+            this.textBoxX.Size = new System.Drawing.Size(100, 20);
             this.textBoxX.TabIndex = 5;
             // 
             // textBoxY
             // 
-            this.textBoxY.Location = new System.Drawing.Point(47, 393);
-            this.textBoxY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxY.Location = new System.Drawing.Point(35, 319);
             this.textBoxY.Name = "textBoxY";
-            this.textBoxY.Size = new System.Drawing.Size(132, 22);
+            this.textBoxY.Size = new System.Drawing.Size(100, 20);
             this.textBoxY.TabIndex = 6;
             // 
             // buttonNapravi
             // 
-            this.buttonNapravi.Location = new System.Drawing.Point(705, 391);
-            this.buttonNapravi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNapravi.Location = new System.Drawing.Point(529, 318);
             this.buttonNapravi.Name = "buttonNapravi";
-            this.buttonNapravi.Size = new System.Drawing.Size(100, 28);
+            this.buttonNapravi.Size = new System.Drawing.Size(75, 23);
             this.buttonNapravi.TabIndex = 7;
             this.buttonNapravi.Text = "Napravi";
             this.buttonNapravi.UseVisualStyleBackColor = true;
@@ -141,10 +132,9 @@
             // 
             // buttonObrisi
             // 
-            this.buttonObrisi.Location = new System.Drawing.Point(404, 389);
-            this.buttonObrisi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonObrisi.Location = new System.Drawing.Point(303, 316);
             this.buttonObrisi.Name = "buttonObrisi";
-            this.buttonObrisi.Size = new System.Drawing.Size(100, 28);
+            this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 8;
             this.buttonObrisi.Text = "Obrisi";
             this.buttonObrisi.UseVisualStyleBackColor = true;
@@ -152,10 +142,9 @@
             // 
             // buttonOcisti
             // 
-            this.buttonOcisti.Location = new System.Drawing.Point(512, 389);
-            this.buttonOcisti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOcisti.Location = new System.Drawing.Point(384, 316);
             this.buttonOcisti.Name = "buttonOcisti";
-            this.buttonOcisti.Size = new System.Drawing.Size(100, 28);
+            this.buttonOcisti.Size = new System.Drawing.Size(75, 23);
             this.buttonOcisti.TabIndex = 9;
             this.buttonOcisti.Text = "Ocisti";
             this.buttonOcisti.UseVisualStyleBackColor = true;
@@ -163,10 +152,9 @@
             // 
             // buttonUcitaj
             // 
-            this.buttonUcitaj.Location = new System.Drawing.Point(16, 15);
-            this.buttonUcitaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUcitaj.Location = new System.Drawing.Point(12, 12);
             this.buttonUcitaj.Name = "buttonUcitaj";
-            this.buttonUcitaj.Size = new System.Drawing.Size(100, 28);
+            this.buttonUcitaj.Size = new System.Drawing.Size(75, 23);
             this.buttonUcitaj.TabIndex = 10;
             this.buttonUcitaj.Text = "Ucitaj";
             this.buttonUcitaj.UseVisualStyleBackColor = true;
@@ -174,10 +162,9 @@
             // 
             // buttonSnimi
             // 
-            this.buttonSnimi.Location = new System.Drawing.Point(16, 50);
-            this.buttonSnimi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSnimi.Location = new System.Drawing.Point(12, 41);
             this.buttonSnimi.Name = "buttonSnimi";
-            this.buttonSnimi.Size = new System.Drawing.Size(100, 28);
+            this.buttonSnimi.Size = new System.Drawing.Size(75, 23);
             this.buttonSnimi.TabIndex = 11;
             this.buttonSnimi.Text = "Snimi";
             this.buttonSnimi.UseVisualStyleBackColor = true;
@@ -185,10 +172,9 @@
             // 
             // buttonNacrtaj
             // 
-            this.buttonNacrtaj.Location = new System.Drawing.Point(705, 358);
-            this.buttonNacrtaj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNacrtaj.Location = new System.Drawing.Point(529, 291);
             this.buttonNacrtaj.Name = "buttonNacrtaj";
-            this.buttonNacrtaj.Size = new System.Drawing.Size(100, 28);
+            this.buttonNacrtaj.Size = new System.Drawing.Size(75, 23);
             this.buttonNacrtaj.TabIndex = 12;
             this.buttonNacrtaj.Text = "Nacrtaj";
             this.buttonNacrtaj.UseVisualStyleBackColor = true;
@@ -196,10 +182,9 @@
             // 
             // buttonIzmeni
             // 
-            this.buttonIzmeni.Location = new System.Drawing.Point(296, 389);
-            this.buttonIzmeni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonIzmeni.Location = new System.Drawing.Point(222, 316);
             this.buttonIzmeni.Name = "buttonIzmeni";
-            this.buttonIzmeni.Size = new System.Drawing.Size(100, 28);
+            this.buttonIzmeni.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmeni.TabIndex = 13;
             this.buttonIzmeni.Text = "Izmeni";
             this.buttonIzmeni.UseVisualStyleBackColor = true;
@@ -207,10 +192,9 @@
             // 
             // buttonProst
             // 
-            this.buttonProst.Location = new System.Drawing.Point(124, 15);
-            this.buttonProst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonProst.Location = new System.Drawing.Point(93, 12);
             this.buttonProst.Name = "buttonProst";
-            this.buttonProst.Size = new System.Drawing.Size(100, 28);
+            this.buttonProst.Size = new System.Drawing.Size(75, 23);
             this.buttonProst.TabIndex = 14;
             this.buttonProst.Text = "Prost";
             this.buttonProst.UseVisualStyleBackColor = true;
@@ -218,10 +202,9 @@
             // 
             // buttonKonveksan
             // 
-            this.buttonKonveksan.Location = new System.Drawing.Point(124, 50);
-            this.buttonKonveksan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonKonveksan.Location = new System.Drawing.Point(93, 41);
             this.buttonKonveksan.Name = "buttonKonveksan";
-            this.buttonKonveksan.Size = new System.Drawing.Size(100, 28);
+            this.buttonKonveksan.Size = new System.Drawing.Size(75, 23);
             this.buttonKonveksan.TabIndex = 15;
             this.buttonKonveksan.Text = "Konveksan";
             this.buttonKonveksan.UseVisualStyleBackColor = true;
@@ -229,10 +212,9 @@
             // 
             // buttonPovrsina
             // 
-            this.buttonPovrsina.Location = new System.Drawing.Point(124, 86);
-            this.buttonPovrsina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPovrsina.Location = new System.Drawing.Point(93, 70);
             this.buttonPovrsina.Name = "buttonPovrsina";
-            this.buttonPovrsina.Size = new System.Drawing.Size(100, 28);
+            this.buttonPovrsina.Size = new System.Drawing.Size(75, 23);
             this.buttonPovrsina.TabIndex = 16;
             this.buttonPovrsina.Text = "Povrsina";
             this.buttonPovrsina.UseVisualStyleBackColor = true;
@@ -240,10 +222,9 @@
             // 
             // buttonBoja
             // 
-            this.buttonBoja.Location = new System.Drawing.Point(705, 15);
-            this.buttonBoja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBoja.Location = new System.Drawing.Point(529, 12);
             this.buttonBoja.Name = "buttonBoja";
-            this.buttonBoja.Size = new System.Drawing.Size(100, 28);
+            this.buttonBoja.Size = new System.Drawing.Size(75, 23);
             this.buttonBoja.TabIndex = 17;
             this.buttonBoja.Text = "Boja";
             this.buttonBoja.UseVisualStyleBackColor = true;
@@ -254,10 +235,9 @@
             this.checkBoxIvice.AutoSize = true;
             this.checkBoxIvice.Checked = true;
             this.checkBoxIvice.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIvice.Location = new System.Drawing.Point(705, 50);
-            this.checkBoxIvice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxIvice.Location = new System.Drawing.Point(529, 41);
             this.checkBoxIvice.Name = "checkBoxIvice";
-            this.checkBoxIvice.Size = new System.Drawing.Size(54, 20);
+            this.checkBoxIvice.Size = new System.Drawing.Size(49, 17);
             this.checkBoxIvice.TabIndex = 18;
             this.checkBoxIvice.Text = "Ivice";
             this.checkBoxIvice.UseVisualStyleBackColor = true;
@@ -268,10 +248,9 @@
             this.checkBoxTacke.AutoSize = true;
             this.checkBoxTacke.Checked = true;
             this.checkBoxTacke.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxTacke.Location = new System.Drawing.Point(705, 79);
-            this.checkBoxTacke.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxTacke.Location = new System.Drawing.Point(529, 64);
             this.checkBoxTacke.Name = "checkBoxTacke";
-            this.checkBoxTacke.Size = new System.Drawing.Size(65, 20);
+            this.checkBoxTacke.Size = new System.Drawing.Size(57, 17);
             this.checkBoxTacke.TabIndex = 19;
             this.checkBoxTacke.Text = "Tacke";
             this.checkBoxTacke.UseVisualStyleBackColor = true;
@@ -279,10 +258,9 @@
             // 
             // buttonSlika
             // 
-            this.buttonSlika.Location = new System.Drawing.Point(16, 86);
-            this.buttonSlika.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSlika.Location = new System.Drawing.Point(12, 70);
             this.buttonSlika.Name = "buttonSlika";
-            this.buttonSlika.Size = new System.Drawing.Size(100, 28);
+            this.buttonSlika.Size = new System.Drawing.Size(75, 23);
             this.buttonSlika.TabIndex = 20;
             this.buttonSlika.Text = "Slika";
             this.buttonSlika.UseVisualStyleBackColor = true;
@@ -291,10 +269,9 @@
             // checkBoxMreza
             // 
             this.checkBoxMreza.AutoSize = true;
-            this.checkBoxMreza.Location = new System.Drawing.Point(705, 108);
-            this.checkBoxMreza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxMreza.Location = new System.Drawing.Point(529, 88);
             this.checkBoxMreza.Name = "checkBoxMreza";
-            this.checkBoxMreza.Size = new System.Drawing.Size(63, 20);
+            this.checkBoxMreza.Size = new System.Drawing.Size(55, 17);
             this.checkBoxMreza.TabIndex = 21;
             this.checkBoxMreza.Text = "Mreza";
             this.checkBoxMreza.UseVisualStyleBackColor = true;
@@ -302,10 +279,9 @@
             // 
             // buttonUbaci
             // 
-            this.buttonUbaci.Location = new System.Drawing.Point(188, 358);
-            this.buttonUbaci.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonUbaci.Location = new System.Drawing.Point(141, 291);
             this.buttonUbaci.Name = "buttonUbaci";
-            this.buttonUbaci.Size = new System.Drawing.Size(100, 28);
+            this.buttonUbaci.Size = new System.Drawing.Size(75, 23);
             this.buttonUbaci.TabIndex = 22;
             this.buttonUbaci.Text = "Ubaci";
             this.buttonUbaci.UseVisualStyleBackColor = true;
@@ -313,9 +289,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1719, 786);
+            this.ClientSize = new System.Drawing.Size(1237, 639);
             this.Controls.Add(this.buttonUbaci);
             this.Controls.Add(this.checkBoxMreza);
             this.Controls.Add(this.buttonSlika);
@@ -339,7 +315,6 @@
             this.Controls.Add(this.buttonDodaj);
             this.Controls.Add(this.listBoxTacke);
             this.Controls.Add(this.panelPoligon);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

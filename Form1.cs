@@ -22,8 +22,8 @@ namespace bmpoligon
         bool mouseDown;
         int clickX;
         int clickY;
-        int clickXorig;
-        int clickYorig;
+        double clickXorig;
+        double clickYorig;
 
         PointF[] paneltacke;
 
@@ -324,14 +324,39 @@ namespace bmpoligon
             }
         }
 
+        private void crtaj()
+        {
+            g.FillRectangle(Brushes.White, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
+
+            mreza();
+
+            g.FillPolygon(boja, paneltacke);
+
+            if (checkBoxIvice.Checked)
+            {
+                for (int i = 0; i < p.br_temena; i++)
+                {
+                    g.DrawLine(new Pen(Brushes.Black), paneltacke[i], paneltacke[(i + 1) % p.br_temena]);
+                }
+            }
+
+            if (checkBoxTacke.Checked)
+            {
+                for (int i = 0; i < p.br_temena; i++)
+                {
+                    g.FillEllipse(Brushes.Black, paneltacke[i].X - 5, paneltacke[i].Y - 5, 10, 10);
+                }
+            }
+        }
+
         private void checkBoxIvice_CheckedChanged(object sender, EventArgs e)
         {
-            panelPoligon.Refresh();
+            crtaj();
         }
 
         private void checkBoxTacke_CheckedChanged(object sender, EventArgs e)
         {
-            panelPoligon.Refresh();
+            crtaj();
         }
 
         private void buttonSlika_Click(object sender, EventArgs e)
@@ -377,7 +402,7 @@ namespace bmpoligon
 
         private void checkBoxMreza_CheckedChanged(object sender, EventArgs e)
         {
-            panelPoligon.Refresh();
+            crtaj();
         }
 
         private void buttonUbaci_Click(object sender, EventArgs e)
@@ -406,26 +431,23 @@ namespace bmpoligon
         {
             if (checkBoxMreza.Checked)
             {
-                double opsegM = opseg * zoom;
-                int x = (int)(pocetnaX + (pomerajX * 1 / opsegM));
-                float tacka = 0;
-                while (tacka < panelPoligon.Width)
+                double xu = panelPoligon.Width / brojLinija * zoom;
+                double x = -(pomerajX) % xu;
+                while (x < panelPoligon.Width)
                 {
-                    tacka = (float)(((x - xMin + centarX) * opseg) * zoom - pomerajX);
-                    PointF t1 = new PointF(tacka, 0);
-                    PointF t2 = new PointF(tacka, panelPoligon.Height);
+                    Point t1 = new Point((int)x, 0);
+                    Point t2 = new Point((int)x, panelPoligon.Height);
                     g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                    x++;
+                    x += xu;
                 }
-                int y = (int)(pocetnaY + (pomerajY * 1 / opsegM) - (panelPoligon.Height * 1 / opsegM));
-                tacka = 0;
-                while (tacka < panelPoligon.Height)
+                double yu = panelPoligon.Height / brojLinija * zoom;
+                double y = panelPoligon.Height - (pomerajY % yu);
+                while (y > 0)
                 {
-                    tacka = (float)(((y - yMin + centarY) * opseg) * zoom - pomerajY);
-                    PointF t1 = new PointF(0, (float)(panelPoligon.Height + tacka));
-                    PointF t2 = new PointF(panelPoligon.Width, (float)(panelPoligon.Height + tacka));
+                    Point t1 = new Point(0, (int)y);
+                    Point t2 = new Point(panelPoligon.Width, (int)y);
                     g.DrawLine(new Pen(Brushes.Black), t1, t2);
-                    y++;
+                    y -= yu;
                 }
             }
         }
@@ -434,37 +456,18 @@ namespace bmpoligon
         {
             if (mouseDown)
             {
-                g.FillRectangle(Brushes.White, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
-
                 float razlX = clickX - e.X;
                 float razlY = clickY - e.Y;
                 pomerajX = clickXorig - e.X;
                 pomerajY = clickYorig - e.Y;
-
-                mreza();
 
                 for (int i = 0; i < p.br_temena; i++)
                 {
                     paneltacke[i].X -= razlX;
                     paneltacke[i].Y -= razlY;
                 }
-                g.FillPolygon(boja, paneltacke);
 
-                if (checkBoxIvice.Checked)
-                {
-                    for (int i = 0; i < p.br_temena; i++)
-                    {
-                        g.DrawLine(new Pen(Brushes.Black), paneltacke[i], paneltacke[(i + 1) % p.br_temena]);
-                    }
-                }
-
-                if (checkBoxTacke.Checked)
-                {
-                    for (int i = 0; i < p.br_temena; i++)
-                    {
-                        g.FillEllipse(Brushes.Black, paneltacke[i].X - 5, paneltacke[i].Y - 5, 10, 10);
-                    }
-                }
+                crtaj();
 
                 clickX = e.X;
                 clickY = e.Y;
@@ -476,30 +479,29 @@ namespace bmpoligon
             mouseDown = true;
             clickX = e.X;
             clickY = e.Y;
-            clickXorig = (int)pomerajX + e.X;
-            clickYorig = (int)pomerajY + e.Y;
+            clickXorig = pomerajX + e.X;
+            clickYorig = pomerajY + e.Y;
         }
 
         private void panelPoligon_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-            MessageBox.Show($"{pomerajX} {pomerajY}");
         }
 
         private void panelPoligon_Scroll(object sender, MouseEventArgs e)
         {
-            g.FillRectangle(Brushes.White, new Rectangle(0, 0, panelPoligon.Width, panelPoligon.Height));
+            mouseDown = false;
 
             if (e.Delta < 0)
             {
                 zoom *= 0.8;
                 pomerajX *= 0.8;
-                pomerajY *= 0.8;
+                pomerajY = panelPoligon.Height - (panelPoligon.Height - pomerajY) * 0.8;
             } else
             {
                 zoom *= 1.25;
                 pomerajX *= 1.25;
-                pomerajY *= 1.25;
+                pomerajY = panelPoligon.Height - (panelPoligon.Height - pomerajY) * 1.25;
             }
 
             for (int i = 0; i < p.br_temena; i++)
@@ -514,25 +516,7 @@ namespace bmpoligon
                 }
             }
 
-            mreza();
-
-            g.FillPolygon(boja, paneltacke);
-
-            if (checkBoxIvice.Checked)
-            {
-                for (int i = 0; i < p.br_temena; i++)
-                {
-                    g.DrawLine(new Pen(Brushes.Black), paneltacke[i], paneltacke[(i + 1) % p.br_temena]);
-                }
-            }
-
-            if (checkBoxTacke.Checked)
-            {
-                for (int i = 0; i < p.br_temena; i++)
-                {
-                    g.FillEllipse(Brushes.Black, paneltacke[i].X - 5, paneltacke[i].Y - 5, 10, 10);
-                }
-            }
+            crtaj();
         }
     }
 }
